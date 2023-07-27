@@ -10,5 +10,6 @@ def pscanner():
 		subprocess.call('cls', shell=True)
 	else:
 		subprocess.call('clear', shell=True)
+		
 
 	remoteServer = input(f"")
