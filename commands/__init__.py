@@ -27,6 +27,7 @@ class Commands:
 		self.cyan = cyan
 		self.white = white
 	
+
 	def menu(self):
 		clear()
 		func = {
@@ -55,11 +56,13 @@ class Commands:
 			Commands.menu()
 		return opc
 		
+
 	def voltar_menu(self):
 		try:
 			voltar = input(f"{black}[{blue}i{black}] {red}Enter Para Voltar ao menu{Style.RESET_ALL}")
 		except KeyboardInterrupt:
 			print(f"{red}You typed ctrl + C")
+
 
 	def gerar_cpf(self):
 		cpf = [randint(0, 9) for x in range(9)]
@@ -68,6 +71,8 @@ class Commands:
 
 			cpf.append(11 - val if val > 1 else 0 )
 		print("%s%s%s.%s%s%s.%s%s%s-%s%s"%tuple(cpf))
+
+		
 	def gerar_cnpj(self):
 		def calculate_special_digit(l):
 			digit = 0
@@ -83,6 +88,8 @@ class Commands:
 			cnpj = [calculate_special_digit(cnpj)] + cnpj
 		
 		print("%s%s%s.%s%s%s.%s%s%s/%s%s%s-%s%s"%tuple(cnpj[::-1]))
+	
+	
 	def gerar_senha(self):
 		size = int(input(f"{blue}[*] {green}Numero De Digitos: {Style.RESET_ALL}"))
 		caracteres = string.ascii_letters + string.digits + string.punctuation
@@ -91,6 +98,8 @@ class Commands:
 		for i in range(size):
 			senha += choice(caracteres)
 		print(senha)
+	
+	
 	def pscanner():
 		if platform.system() == windows():
 			subprocess.call('cls', shell=True)
