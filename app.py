@@ -11,16 +11,13 @@ from commands import Commands
 from ascii import *
 from clear import clear
 
-name = input(f"{blue}[*]{green} Username: {reset}")
-password = input(f"{blue}[*]{green} Password: {reset}")
-line = '-' * 56
-commandss = Commands(name, password, blue, red, green, black, cyan, line)
-
 while True:
     try:
+        commandss = Commands(blue, red, green, black, cyan, white)
+
         opc = commandss.menu()
         inp = int(input(f"{red}/ {blue}==> {white}"))
 
-    except Exception as e:
-        print(f"\n{red}[i] {black}Error {e}")
+    except KeyboardInterrupt:
+        print(f"\n{red}[i] {black}Error ")
         exit()

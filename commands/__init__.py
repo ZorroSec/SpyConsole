@@ -15,32 +15,18 @@ from ascii import *
 from random import choice
 import string
 from clear import clear
+from banner import banner
+
 
 class Commands:
-	def __init__(self, name, password, blue, red, green, black, cyan, white, line):
-		self.name = name
-		self.password = password
+	def __init__(self, blue, red, green, black, cyan, white):
 		self.blue = blue
 		self.red = red
 		self.green = green
 		self.black = black
 		self.cyan = cyan
 		self.white = white
-		self.line = line
 	
-	def banner(self):
-		banner = f"""{self.black}
-
- ______     ______   __  __     ______     ______     __   __     ______     ______     __         ______    
-/\  ___\   /\  == \ /\ \_\ \   /\  ___\   /\  __ \   /\ "-.\ \   /\  ___\   /\  __ \   /\ \       /\  ___\   
-\ \___  \  \ \  _-/ \ \____ \  \ \ \____  \ \ \/\ \  \ \ \-.  \  \ \___  \  \ \ \/\ \  \ \ \____  \ \  __\   
- \/\_____\  \ \_\    \/\_____\  \ \_____\  \ \_____\  \ \_\\"\_\  \/\_____\  \ \_____\  \ \_____\  \ \_____\ 
-  \/_____/   \/_/     \/_____/   \/_____/   \/_____/   \/_/ \/_/   \/_____/   \/_____/   \/_____/   \/_____/ 
-                                                                                                         
-{self.line}
-    Olá {self.name}
-{self.line}
-"""
 	def menu(self):
 		clear()
 		func = {
@@ -48,21 +34,22 @@ class Commands:
 	  		'Tools':['Gerar CPF', 'Gerar CNPJ', 'Gerar SENHA']
 		}
 
-		print(Commands.banner())
+		print(banner())
+		print(line)
 		for c, key in enumerate(func.keys()):
-			print(f"{self.blue:^28}[{self.green}]{c+1}{self.blue} {self.white}{key:^28}")
-		print(self.line)
+			print(f"{self.blue:^28}[{self.green}{c+1}{self.blue}] {self.white}{key:^28}")
+		print(line)
 		opc = input(f"{self.blue} ==> {self.white}").replace("0", "")
 		clear()
-		print(Commands.banner)
+		print(banner())
 		if opc == "1":
 			for c, item in enumerate(func['Consultas']):
 				print(f"{self.blue:^28}[{self.cyan}0{c+1}{self.blue}] {self.white}{item:^10}")
-			print(self.line)
+			print(line)
 		elif opc == "2":
 			for c, item in enumerate(func['Tools']):
 				print(f"{self.blue:^28}[{self.cyan}0{c+1}{self.blue}] {self.white}{item:^10}")
-			print(self.line)
+			print(line)
 		else:
 			print(f"{self.red}Comando Invalido!")
 			Commands.menu()
