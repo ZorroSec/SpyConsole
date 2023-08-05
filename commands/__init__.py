@@ -14,13 +14,60 @@ from random import randint
 from ascii import *
 from random import choice
 import string
+from clear import clear
 
 class Commands:
-	def __init__(self, name, password, api):
+	def __init__(self, name, password, blue, red, green, black, cyan, white, line):
 		self.name = name
 		self.password = password
-		self.api = api
+		self.blue = blue
+		self.red = red
+		self.green = green
+		self.black = black
+		self.cyan = cyan
+		self.white = white
+		self.line = line
+	
+	def banner(self):
+		banner = f"""{self.black}
 
+ ______     ______   __  __     ______     ______     __   __     ______     ______     __         ______    
+/\  ___\   /\  == \ /\ \_\ \   /\  ___\   /\  __ \   /\ "-.\ \   /\  ___\   /\  __ \   /\ \       /\  ___\   
+\ \___  \  \ \  _-/ \ \____ \  \ \ \____  \ \ \/\ \  \ \ \-.  \  \ \___  \  \ \ \/\ \  \ \ \____  \ \  __\   
+ \/\_____\  \ \_\    \/\_____\  \ \_____\  \ \_____\  \ \_\\"\_\  \/\_____\  \ \_____\  \ \_____\  \ \_____\ 
+  \/_____/   \/_/     \/_____/   \/_____/   \/_____/   \/_/ \/_/   \/_____/   \/_____/   \/_____/   \/_____/ 
+                                                                                                         
+{self.line}
+    Olá {self.name}
+{self.line}
+"""
+	def menu(self):
+		clear()
+		func = {
+			'Consultas':['CEP', 'CNPJ'],
+	  		'Tools':['Gerar CPF', 'Gerar CNPJ', 'Gerar SENHA']
+		}
+
+		print(Commands.banner())
+		for c, key in enumerate(func.keys()):
+			print(f"{self.blue:^28}[{self.green}]{c+1}{self.blue} {self.white}{key:^28}")
+		print(self.line)
+		opc = input(f"{self.blue} ==> {self.white}").replace("0", "")
+		clear()
+		print(Commands.banner)
+		if opc == "1":
+			for c, item in enumerate(func['Consultas']):
+				print(f"{self.blue:^28}[{self.cyan}0{c+1}{self.blue}] {self.white}{item:^10}")
+			print(self.line)
+		elif opc == "2":
+			for c, item in enumerate(func['Tools']):
+				print(f"{self.blue:^28}[{self.cyan}0{c+1}{self.blue}] {self.white}{item:^10}")
+			print(self.line)
+		else:
+			print(f"{self.red}Comando Invalido!")
+			Commands.menu()
+		return opc
+		
 	def voltar_menu(self):
 		try:
 			voltar = input(f"{black}[{blue}i{black}] {red}Enter Para Voltar ao menu{Style.RESET_ALL}")
