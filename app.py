@@ -9,24 +9,18 @@ from linux import linux
 from windows import windows
 from commands import Commands
 from ascii import *
+from clear import clear
 
+name = input(f"{blue}[*]{green} Username: {reset}")
+password = input(f"{blue}[*]{green} Password: {reset}")
+line = '-' * 56
+commandss = Commands(name, password, blue, red, green, black, cyan, line)
 
 while True:
     try:
-        if platform.system() == windows():
-            subprocess.call('cls', shell=True)
-        else:
-            subprocess.call('clear', shell=True)
+        opc = commandss.menu()
+        inp = int(input(f"{red}/ {blue}==> {white}"))
 
-
-        line = '-' * 56
-        name = input(f"{blue}[*]{green} Username: {reset}")
-        password = input(f"{blue}[*]{green} Password: {reset}")
-        commandss = Commands(name, password, blue, red, green, black, cyan, line)
-        commandss.gerar_cnpj()
-        commandss.gerar_cpf()
-        commandss.gerar_senha()
-        commandss.voltar_menu()
     except Exception as e:
         print(f"\n{red}[i] {black}Error {e}")
         exit()
