@@ -10,7 +10,7 @@ black = Fore.LIGHTBLACK_EX
 reset = Style.RESET_ALL
 cyan = Fore.LIGHTCYAN_EX
 white = Fore.LIGHTWHITE_EX
-
+line = '-' * 56
 class Ascii:
 	def clear():
 		os.system('cls||clear')
